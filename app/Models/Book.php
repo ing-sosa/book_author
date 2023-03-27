@@ -9,9 +9,7 @@ class Book extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    protected $filable = [
-        'name', 'title', 'description', 'author_id', 'year_published', 'isbn'
-    ];
+    protected $filable = ['title', 'description', 'author_id', 'year_published', 'isbn'];
 
     public function author()
     {
