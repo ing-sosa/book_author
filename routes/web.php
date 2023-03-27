@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\BookController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -28,4 +30,22 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+Route::middleware(['auth', 'verified'])->name('authors.')->group(function () {
+    Route::resource('authors', AuthorController::class)->names([
+        'index' => 'index',
+        'store' => 'store',
+        'update' => 'update',
+        'destroy' => 'destroy',
+    ]);
+});
+
+Route::middleware(['auth', 'verified'])->name('books.')->group(function () {
+    Route::resource('books', BookController::class)->names([
+        'index' => 'index',
+        'store' => 'store',
+        'update' => 'update',
+        'destroy' => 'destroy',
+    ]);
+});
+
+require __DIR__ . '/auth.php';
