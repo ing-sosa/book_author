@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
     protected $filable = [
         'name', 'title', 'description', 'author_id', 'year_published', 'isbn'
     ];
