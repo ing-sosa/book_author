@@ -24,18 +24,16 @@ const save = () => {
 };
 
 const update = () => {
-    const id = document.getElementById('id2').value;
+
+    const id = document.querySelector("#id2").value;
     form.put(route('authors.update', id), { onSuccess: () => close() });
 };
 
 const close = () => {
-    console.info('--props.on', props.on);
     form.reset();
-    document.getElementById('close' + props.op).click();
+    document.querySelector('#close' + props.op).click();
 
 };
-
-console.info('-props', props)
 </script>
 
 <template>
